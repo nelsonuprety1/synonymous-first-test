@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* css variables */
+:root {
+  --text-color: #001858;
+}
+
+body {
+  background: #659999;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f4791f, #659999);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f4791f, #659999);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+header {
+  color: var(--text-color);
+  display: flex;
+  font-size: 2em;
+  justify-content: center;
+  margin-top: 15%;
+  margin-bottom: 5%;
+}
+
+.searchBox {
+  /* display: flex;
+    justify-content: center; */
+  background-color: #ced8c5;
+  padding: 40px;
+  width: 50%;
+  /* center a div horizontally if we use margin:0 auto */
+  margin: 0 auto;
+}
+
+.find {
+  display: block;
+  font-size: 30px;
+  font-weight: 1000;
+  line-height: 2.15;
+  margin-bottom: 5px;
+}
+
+#search {
+  /* width: 100%; */
+  min-width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  outline-color: #659999;
+}
+
+#submit {
+  height: 40px;
+  width: 20%;
+}
+
+#submit:hover {
+  background-color: #8fd9a8;
+}
+
+/* 
+.mean.hidden {
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 9px;
+    list-style-type: none;
+    margin-top: 40px;
+    overflow-wrap: break-word;
+    width: 50%;
+    background-color: #fff;
+   
+} */
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.meanings {
+  display: flex;
+  font-size: 1rem;
+  background-color: #ced8c5;
+  margin-top: 1rem;
+  min-width: 30rem;
+  min-height: 50%;
+  opacity: 0;
+  padding: 2rem;
+  transition: opacity 1s;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+.mean {
+  background-color: #fff;
+  box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
+  font-size: 1.8rem;
+  min-width: 100%;
+  border-radius: 2rem;
+  margin: 0 3rem;
+  padding: 2rem;
+  /* overflow: hidden; */
+}
