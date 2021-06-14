@@ -19,71 +19,49 @@ const renderSynonym = function (data) {
          <li>${data.meanings[0].definitions[0].synonyms}</li>
      </ul>
     `;
-  meaningContainer.insertAdjacentHTML('beforeend', html);
+  // meaningContainer.insertAdjacentHTML('beforeend', html);
+  meaningContainer.innerHTML = html;
   meaningContainer.style.opacity = 1;
 };
 
-submit.addEventListener('click', function () {
-  const search = document.querySelector('#search').value;
+function getSynonym() {
+  const searches = document.querySelector('#search');
+  const search = searches.value.trim();
+  // searches.value = '';
 
-  const getSynonym = function () {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${search}`)
-      .then(function (response) {
-        console.log(response);
-        return response.json();
-      })
-      .then(function ([data]) {
-        // console.log(data.meanings[0].definitions[0].synonyms);
-        renderSynonym(data);
+  if (search === '') return;
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${search}`)
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function ([data]) {
+      renderSynonym(data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  // searches.value = '';
+}
 
-        // submit.addEventListener('click', function () {
-        //   renderSynonym(data);
-        // });
-      });
-  };
-  getSynonym();
-});
+submit.addEventListener('click', getSynonym);
 
-// const meaningContainer = document.querySelector('.meanings');
+// submit.addEventListener('click', function () {
+//   const searches = document.querySelector('#search');
+//   const search = searches.value.trim();
+//   searches.value = '';
 
-// const renderSynonym = function (data) {
-//   const html = `
-//     <ul class="mean">
-//          <li>${data.meanings[0].definitions[0].synonyms}</li>
-//      </ul>
-//     `;
-//   meaningContainer.insertAdjacentHTML('beforeend', html);
-//   meaningContainer.style.opacity = 1;
-// };
-
-// let synonyms = search.value;
-// const getSynonym = function (synonyms) {
-//   fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${synonyms}`)
-//     .then(function (response) {
-//       console.log(response);
-//       return response.json();
-//     })
-//     .then(function ([data]) {
-//       // console.log(data.meanings[0].definitions[0].synonyms);
-//       renderSynonym(data);
-
-//       // submit.addEventListener('click', function () {
-//       //   renderSynonym(data);
-//       // });
-//     });
-// };
-
-// getSynonym('yes');
-
-// const getSynonym = function (synonyms) {
-//   // fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${synonyms}`)
-//     .then(function (response) {
-//       console.log(response);
-//       return response.json();
-//     })
-//     .then(function ([data]) {
-//       // console.log(data.meanings[0].definitions[0].synonyms);
-//       // renderSynonym(data);
-//     });
-// };
-// getSynonym('yes');
+//   const getSynonym = function () {
+//     if (search === '') return;
+//     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${search}`)
+//       .then(function (response) {
+//         console.log(response);
+//         return response.json();
+//       })
+//       .then(function ([data]) {
+//         renderSynonym(data);
+//       });
+//   };
+//   getSynonym();
+//   getSynonym();
+// });
